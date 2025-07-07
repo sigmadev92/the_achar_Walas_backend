@@ -11,6 +11,7 @@
       href="/system/css/layouts/nulluser.css"
       type="text/css"
     />
+    <link rel="stylesheet" href="/system/css/forms.css" />
     <link
       rel="shortcut icon"
       href="/system/images/favicon.ico"
@@ -32,16 +33,18 @@
             <a href="/" id="home" itemid="home">Home</a>
           </li>
           <li><a href="/web/user/register" id="try-us">Try Us</a></li>
+          <li><a href="/about-us" id="about-us">About Us</a></li>
         </ul>
       </nav>
     </header>
-    <main><%- body%></main>
+    <main><%- body %></main>
     <script>
       document.getElementsByTagName("title")[0].textContent =
         document.getElementById("title").textContent;
       let obj = {
         "/web/user/register": "try-us",
         "/": "home",
+        "/about-us": "about-us",
       };
       document
         .getElementById(obj[location.pathname])

@@ -8,7 +8,7 @@
   display: none;
 }
 body {
-  height: calc(100vh - 90px);
+  height: calc(100vh - 70px);
   background-color: rgba(0, 0, 0, 0.662);
 }
 
@@ -28,11 +28,35 @@ h1#heading {
   font-size: 1rem;
 }
 main {
-  margin-top: 90px;
+  margin-top: 70px;
 }
 section {
   color: white;
   padding: 0 1rem;
+  height: 90vh;
+}
+section#about-page {
+  padding: 0;
+}
+#hero-div {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 500px;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+#hero-div #img {
+  height: 100%;
+  width: 50%;
+}
+#hero-div button {
+  height: 4.5rem;
+  width: 4.5rem;
+  background-color: rgba(12, 9, 4, 0.313);
+  border-radius: 50%;
+  cursor: pointer;
+  border: none;
 }
 ul#top-nav {
   display: flex;

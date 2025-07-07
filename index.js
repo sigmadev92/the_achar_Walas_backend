@@ -27,6 +27,9 @@ app.use(loggerMiddleware);
 app.get("/", (req, res) => {
   res.render("pages/nullUser/home.ejs");
 });
+app.get("/about-us", (req, res) => {
+  res.render("pages/nullUser/aboutus.ejs");
+});
 
 app.use("/web", webRouter);
 app.use("/api", apiRouter);
