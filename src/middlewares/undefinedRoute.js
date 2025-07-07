@@ -5,6 +5,7 @@ export const handleUndefinedRouteMain = (req, res, next) => {
       .send({ success: false, message: "Reached undefined Route" });
   }
   //will render a vew here when setup ejs.
+  return res.send("Route undefined");
 };
 
 export const handleUndefinedRouteAPI = (req, res, next) => {

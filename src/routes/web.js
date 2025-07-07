@@ -1,9 +1,10 @@
 import { Router } from "express";
+import setLayoutinLocals from "../middlewares/setLayout.js";
 
 const webRouter = Router();
-
-webRouter.get("/", (req, res) => {
-  res.send("Working web route");
+webRouter.use(setLayoutinLocals);
+webRouter.get("/user/register", (req, res) => {
+  res.render("pages/nullUser/register");
 });
 
 export default webRouter;
