@@ -19,17 +19,21 @@ export const protectSensitive = (req, res, next) => {
   if (req.user) {
     next();
   } else {
-    next(new CustomError(400, "You must be logged In to access this feature"));
+    if (req.requestType === "api")
+      next(
+        new CustomError(400, "You must be logged In to access this feature")
+      );
+    else return res.redirect("/web/user/login");
   }
 };
 
 //when user is trying to access registration, login or forgotpassword page when he is already logged in
-export const PreventExposed = (req, res, next) => {
+export const preventExposed = (req, res, next) => {
   if (!req.user) {
     next();
-  } else {
+  } else if (req.requestType === "api")
     next(new CustomError(400, "You are already Logged In."));
-  }
+  else res.redirect("/api/user/");
 };
 
 //for admin routes - access to admin; For user routes - access to users

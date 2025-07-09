@@ -8,9 +8,10 @@ export class CustomError extends Error {
 
 export const errorHandlerMiddleware = (err, req, res, next) => {
   if (err instanceof CustomError) {
-    return res
-      .status(err.statusCode)
-      .send({ success: false, message: err.message });
+    if (req.requestType === "api")
+      return res
+        .status(err.statusCode)
+        .send({ success: false, message: err.message });
   }
   return res.status(500).send({ success: false, message: err.message });
 };
