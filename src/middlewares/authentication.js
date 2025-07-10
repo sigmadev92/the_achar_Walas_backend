@@ -46,3 +46,10 @@ export const authByUserRole = (role) => {
     } else next(new CustomError(400, "You cannot access this feature"));
   };
 };
+
+export const isMasterAdmin = (req, res, next) => {
+  if (req.user.firstAdmin) {
+    return next();
+  }
+  next(new CustomError(400, "Only master Admin can access this feature"));
+};

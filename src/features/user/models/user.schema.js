@@ -49,11 +49,12 @@ const userSchema = new mongoose.Schema(
     profilePic: {
       type: String,
     },
-    //will work on address
-    // address:{
-    //   type:String,
-
-    // }
+    address: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "UserAddress",
+    },
+    resetPasswordToken: String,
+    resetPasswordExpire: Date,
   },
   {
     timestamps: true,
@@ -68,7 +69,7 @@ userSchema.pre("save", async function (next) {
   next();
 });
 
-userSchema.methods.generateJWTtoken = () => {
+userSchema.methods.generateJWTtoken = function () {
   const token = jwt.sign(
     { id: this._id, name: this.name, role: this.role, pic: this.profilePic },
     JWT_SECRET,
